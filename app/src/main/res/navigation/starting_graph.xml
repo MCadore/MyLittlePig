@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/startingFragment"
-        android:name="br.example.mylittlepig.StartingFragment"
+        android:name="br.example.mylittlepig.startingApp.StartingFragment"
         android:label="fragment_starting"
         tools:layout="@layout/fragment_starting" />
 </navigation>

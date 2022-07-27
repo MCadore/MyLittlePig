@@ -1,8 +1,9 @@
-package br.example.mylittlepig
+package br.example.mylittlepig.startingApp
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import br.example.mylittlepig.Success
 
 class StartingViewModel : ViewModel() {
 
