@@ -4,4 +4,8 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="add_income">Add income</string>
     <string name="delete_income">Delete income</string>
+    <string name="foi">foi!</string>
+    <string name="valor_da_renda">Valor da Renda</string>
+    <string name="apelido_da_renda">Apelido da Renda</string>
+    <string name="me_diga_um_apelido_para_sua_conta_e_tambem_o_valor_mensal">Me diga um apelido para sua conta, e tambem o valor mensal:</string>
 </resources>

@@ -5,6 +5,7 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
+import java.util.*
 
 class IncomeRepository(context: Context) {
 
@@ -36,6 +37,7 @@ class IncomeRepository(context: Context) {
             dao.deleteIncome(income)
         }
 
+    fun getNewId(): String = UUID.randomUUID().toString()
 
 
 }
