@@ -10,7 +10,6 @@ import br.example.mylittlepig.Result
 import br.example.mylittlepig.Success
 import br.example.mylittlepig.home.data.Income
 import br.example.mylittlepig.home.data.IncomeRepository
-import br.example.mylittlepig.home.view.IncomeVO
 import kotlinx.coroutines.launch
 
 class HomeViewModel(app: Application) : AndroidViewModel(app) {
@@ -20,8 +19,8 @@ class HomeViewModel(app: Application) : AndroidViewModel(app) {
     //Livedata
     private val _onUpdateIncome: MutableLiveData<Success<Boolean>> = MutableLiveData()
     val onUpdateIncome: LiveData<Success<Boolean>> = _onUpdateIncome
-    private val _onFetchIncome: MutableLiveData<Result<List<IncomeVO>>> = MutableLiveData()
-    val onFetchIncome: LiveData<Result<List<IncomeVO>>> = _onFetchIncome
+    private val _onFetchIncome: MutableLiveData<Result<List<Income>>> = MutableLiveData()
+    val onFetchIncome: LiveData<Result<List<Income>>> = _onFetchIncome
 
     fun addIncome(income: Income) {
         try {
@@ -60,14 +59,14 @@ class HomeViewModel(app: Application) : AndroidViewModel(app) {
         try {
             viewModelScope.launch {
                 val incomeList: List<Income> = repository.fetchAllIncome()
-                val incomeVO: List<IncomeVO> = incomeList.map {
-                    IncomeVO(
+                val income: List<Income> = incomeList.map {
+                    Income(
                         uid = it.uid,
                         income_tittle = it.income_tittle,
                         income_value = it.income_value,
                     )
                 }
-                _onFetchIncome.value = Success(incomeVO)
+                _onFetchIncome.value = Success(income)
             }
         }catch (ex: Exception){
             _onFetchIncome.value = Error()

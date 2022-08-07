@@ -7,9 +7,12 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import br.example.mylittlepig.Error
+import br.example.mylittlepig.R
 import br.example.mylittlepig.Success
 import br.example.mylittlepig.databinding.FragmentHomeBinding
+import br.example.mylittlepig.home.data.Income
 import br.example.mylittlepig.home.viewModel.HomeViewModel
 
 
@@ -28,7 +31,7 @@ class HomeFragment : Fragment() {
 
     private val viewModel: HomeViewModel by viewModels()
     private val adapter: HomeAdapter by lazy {
-        HomeAdapter()
+        HomeAdapter(:: onEdited, :: onDeleted)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -58,9 +61,7 @@ class HomeFragment : Fragment() {
 
     private fun setupListners() {
         binding.addIncomeBtn.setOnClickListener {
-        }
-        binding.deleteIncomeBtm.setOnClickListener {
-
+            findNavController().navigate(R.id.action_homeFragment_to_updateIncomeFragment)
         }
     }
 
@@ -68,10 +69,19 @@ class HomeFragment : Fragment() {
         viewModel.fetchAllIncome()
     }
 
-    private fun setupView(income: List<IncomeVO>) {
+    private fun setupView(income: List<Income>) {
         adapter.addIncome(income)
         binding.RecyclerViewContainer.adapter = adapter
     }
+
+    private fun onEdited(incomeVO: Income) {
+
+    }
+
+    private fun  onDeleted(income: Income){
+        viewModel.deleteIncome(income)
+    }
+
 
     companion object {
         private const val ERROR_MSG = "Ocorreu um erro"

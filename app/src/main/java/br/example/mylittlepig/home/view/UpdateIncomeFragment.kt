@@ -42,13 +42,10 @@ class UpdateIncomeFragment : Fragment() {
     }
 
     private fun navigateToHome() {
-
     }
 
     private fun setupListners() {
         binding.ConfirmNewIncomeBtn.setOnClickListener {
-            val income = IncomeVO()
-            viewModel.addIncome()
         }
     }
 
